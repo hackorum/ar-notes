@@ -1,0 +1,56 @@
+{
+  "0": {
+    "category_name": "Hall",
+    "barcode_value": 0,
+    "notes": [
+      {
+        "title": "Hall note 1"
+      },
+      {
+        "title": "Hall note 2"
+      },
+      {
+        "title": "Hall note 3"
+      },
+      {
+        "title": "Hall note 4"
+      }
+    ]
+  },
+  "1": {
+    "category_name": "Bedroom",
+    "barcode_value": 1,
+    "notes": [
+      {
+        "title": "Bedroom note 1"
+      },
+      {
+        "title": "Bedroom note 2"
+      },
+      {
+        "title": "Bedroom note 3"
+      },
+      {
+        "title": "Bedroom note 4"
+      }
+    ]
+  },
+  "2": {
+    "category_name": "Study Room",
+    "barcode_value": 2,
+    "notes": [
+      {
+        "title": "Study Room note 1"
+      },
+      {
+        "title": "Study Room note 2"
+      },
+      {
+        "title": "Study Room note 3"
+      },
+      {
+        "title": "Study Room note 4"
+      }
+    ]
+  }
+}
