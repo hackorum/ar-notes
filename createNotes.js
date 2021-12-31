@@ -17,6 +17,7 @@ AFRAME.registerComponent("createnotes", {
   createCategory: async function (category) {
     let categoryName = category.category_name;
     let barcodeValue = category.barcode_value;
+    let notes = JSON.stringify(category.notes);
 
     var scene = document.querySelector("a-scene");
 
@@ -24,8 +25,9 @@ AFRAME.registerComponent("createnotes", {
 
     marker.setAttribute("id", `marker-${barcodeValue}`);
     marker.setAttribute("type", "barcode");
-    marker.setAttribute("element_name", categoryName);
+    marker.setAttribute("category_name", categoryName);
     marker.setAttribute("value", barcodeValue);
+    marker.setAttribute("notes", notes);
     marker.setAttribute("markerhandler", {});
 
     scene.appendChild(marker);
