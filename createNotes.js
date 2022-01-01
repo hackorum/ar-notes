@@ -8,11 +8,31 @@ AFRAME.registerComponent("createnotes", {
       var category = categories[barcode];
       this.createCategory(category);
     });
+
+    let addCategoryButton = document.querySelector("#add-category-button");
+    console.log(addCategoryButton);
+    addCategoryButton.addEventListener("click", async () => {
+      let newCategoryName = prompt("Please enter the new category name:", "");
+      if (newCategoryName != null) {
+        await firebase
+          .firestore()
+          .collection("categories")
+          .doc(JSON.stringify(categories.length))
+          .set({
+            barcode_value: categories.length,
+            category_name: newCategoryName,
+            notes: [],
+          });
+      }
+      categories = await this.getCategories();
+    });
   },
-  getCategories: function () {
-    return fetch("categoryList.json")
-      .then((res) => res.json())
-      .then((data) => data);
+  getCategories: async function () {
+    return await firebase
+      .firestore()
+      .collection("categories")
+      .get()
+      .then((snap) => snap.docs.map((doc) => doc.data()));
   },
   createCategory: async function (category) {
     let categoryName = category.category_name;

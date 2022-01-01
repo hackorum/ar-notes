@@ -7,10 +7,42 @@
       name="viewport"
       content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyCPKxynZKyxP9xRpR4GQ1sPV3AWfpRsp2A",
+        authDomain: "ar-todo-519e1.firebaseapp.com",
+        projectId: "ar-todo-519e1",
+        storageBucket: "ar-todo-519e1.appspot.com",
+        messagingSenderId: "877777546697",
+        appId: "1:877777546697:web:a4922c14002d5c33b30c18",
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://aframe.io/releases/1.0.1/aframe.min.js"></script>
     <script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+    <script src="./addButtons.js"></script>
     <script src="./createNotes.js"></script>
     <script src="./markerhandler.js"></script>
+    <link href="./styles.css" rel="stylesheet" />
   </head>
 
   <body style="margin: 0px; overflow: hidden">
@@ -21,8 +53,10 @@
       embedded
       createnotes
       markerhandler
+      create-buttons
     >
       <a-entity id="camera" camera></a-entity>
     </a-scene>
+    <div id="button-div" class="fixed-bottom"></div>
   </body>
 </html>

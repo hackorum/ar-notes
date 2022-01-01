@@ -24,7 +24,7 @@ AFRAME.registerComponent("markerhandler", {
       let notes = JSON.parse(notesAttribute);
       let z = -0.85;
       for (let noteIndex in notes) {
-        let noteTitle = notes[noteIndex].title;
+        let noteTitle = notes[noteIndex];
         let noteTextEl = document.createElement("a-entity");
         noteTextEl.setAttribute("position", { x: 1.1, y: 0, z: z });
         noteTextEl.setAttribute("rotation", { x: -90, y: 0, z: 0 });
