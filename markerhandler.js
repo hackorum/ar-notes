@@ -45,6 +45,30 @@ AFRAME.registerComponent("markerhandler", {
         marker.appendChild(plane);
         marker.appendChild(text);
       }
+
+      let addNoteButton = document.querySelector("#add-note-button");
+      addNoteButton.style.display = "inline-block";
+      addNoteButton.addEventListener("click", () => {
+        let notes = JSON.parse(this.el.getAttribute("notes"));
+        if (notes !== null) {
+          let newNoteText = prompt("Enter text of new note:", "");
+          notes = [...notes, newNoteText];
+          firebase
+            .firestore()
+            .collection("categories")
+            .doc(this.el.getAttribute("value"))
+            .update({
+              notes: notes,
+            })
+            .then(() => {
+              window.location.reload();
+            });
+        }
+      });
+    });
+    this.el.addEventListener("markerLost", () => {
+      let addNoteButton = document.querySelector("#add-note-button");
+      addNoteButton.style.display = "none";
     });
   },
 });

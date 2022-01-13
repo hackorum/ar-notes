@@ -5,7 +5,13 @@ AFRAME.registerComponent("create-buttons", {
     button1.setAttribute("id", "add-category-button");
     button1.setAttribute("class", "btn btn-warning ml-3 mr-3 mb-3");
 
+    var button2 = document.createElement("button");
+    button2.innerHTML = "Add Notes";
+    button2.setAttribute("id", "add-note-button");
+    button2.setAttribute("class", "btn btn-warning ml-3 mr-3 mb-3");
+
     var buttonDiv = document.getElementById("button-div");
     buttonDiv.appendChild(button1);
+    buttonDiv.appendChild(button2);
   },
 });

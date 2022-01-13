@@ -7,6 +7,10 @@
   z-index: 1;
 }
 
+#add-note-button {
+  display: none;
+}
+
 button {
   width: 165px;
 }
