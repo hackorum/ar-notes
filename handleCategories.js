@@ -1,4 +1,4 @@
-AFRAME.registerComponent("createnotes", {
+AFRAME.registerComponent("handle-categories", {
   init: async function () {
     var categories = await this.getCategories();
 
@@ -10,7 +10,6 @@ AFRAME.registerComponent("createnotes", {
     });
 
     let addCategoryButton = document.querySelector("#add-category-button");
-    console.log(addCategoryButton);
     addCategoryButton.addEventListener("click", async () => {
       let newCategoryName = prompt("Please enter the new category name:", "");
       if (newCategoryName != null) {
@@ -22,6 +21,32 @@ AFRAME.registerComponent("createnotes", {
             barcode_value: categories.length,
             category_name: newCategoryName,
             notes: [],
+          })
+          .then(() => {
+            window.location.reload();
+          });
+      }
+      categories = await this.getCategories();
+    });
+
+    let removeCategoryButton = document.querySelector(
+      "#remove-category-button"
+    );
+    removeCategoryButton.addEventListener("click", async () => {
+      let removeCategoryName = prompt(
+        "Please enter the category name that you want to remove:",
+        ""
+      );
+      if (removeCategoryName != null) {
+        await firebase
+          .firestore()
+          .collection("categories")
+          .where("category_name", "==", removeCategoryName)
+          .get()
+          .then((querySnapshot) => {
+            querySnapshot.forEach(async (doc) => {
+              doc.ref.delete();
+            });
           });
       }
       categories = await this.getCategories();

@@ -7,7 +7,8 @@
   z-index: 1;
 }
 
-#add-note-button {
+#add-note-button,
+#remove-note-button {
   display: none;
 }
 

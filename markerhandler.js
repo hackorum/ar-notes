@@ -1,5 +1,5 @@
 AFRAME.registerComponent("markerhandler", {
-  init: function () {
+  init: function() {
     this.el.addEventListener("markerFound", () => {
       let value = this.el.getAttribute("value");
       let marker = document.querySelector(`#marker-${value}`);
@@ -65,10 +65,35 @@ AFRAME.registerComponent("markerhandler", {
             });
         }
       });
+
+      let removeNoteButton = document.querySelector("#remove-note-button");
+      removeNoteButton.style.display = "inline-block";
+      removeNoteButton.addEventListener("click", () => {
+        let notes = JSON.parse(this.el.getAttribute("notes"));
+        if (notes !== null) {
+          let removeNoteText = prompt("Enter the index of the note:", "");
+          notes = notes.filter(
+            (_, index) => index != JSON.parse(removeNoteText) - 1
+          );
+          firebase
+            .firestore()
+            .collection("categories")
+            .doc(this.el.getAttribute("value"))
+            .update({
+              notes: notes,
+            })
+            .then(() => {
+              window.location.reload();
+            });
+        }
+      });
     });
     this.el.addEventListener("markerLost", () => {
       let addNoteButton = document.querySelector("#add-note-button");
       addNoteButton.style.display = "none";
+
+      let removeNoteText = document.querySelector("#remove-note-button");
+      removeNoteText.style.display = "none";
     });
   },
 });
